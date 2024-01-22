@@ -3,7 +3,8 @@ const {createApp} = Vue
 const app = createApp({
     data:() =>({
         destinations,
-        currentActiveIndex: 0
+        currentActiveIndex: 0,
+        autoPlay: null
     }),
     methods:{
         goBack(){
@@ -20,11 +21,21 @@ const app = createApp({
             }else{
                 this.currentActiveIndex++;
             }
+        },
+
+        startAutoplay(){
+            this.autoPlay = setInterval(() => {
+                this.goNext();
+            },3000)
+        },
+
+        stopAutoplay(){
+            clearTimeout(this.autoPlay)
         }
     },
 
     mounted(){
-        setInterval(this.goNext,3000)
+        this.startAutoplay();
     }
 });
 
