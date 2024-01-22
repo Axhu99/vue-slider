@@ -21,6 +21,10 @@ const app = createApp({
                 this.currentActiveIndex++;
             }
         }
+    },
+
+    mounted(){
+        setInterval(this.goNext,3000)
     }
 });
 
